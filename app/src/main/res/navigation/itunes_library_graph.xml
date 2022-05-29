@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itunes_library_graph"
+    app:startDestination="@id/ITunesMusicFragment">
+
+    <fragment
+        android:id="@+id/ITunesMusicFragment"
+        android:name="com.github.krottv.tmstemp.view.ITunesMusicFragment"
+        android:label="ITunesMusicFragment" >
+        <action
+            android:id="@+id/action_ITunesMusicFragment_to_libraryMusicFragment"
+            app:destination="@id/libraryMusicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/libraryMusicFragment"
+        android:name="com.github.krottv.tmstemp.view.LibraryMusicFragment"
+        android:label="LibraryMusicFragment" >
+        <action
+            android:id="@+id/action_libraryMusicFragment_to_ITunesMusicFragment"
+            app:destination="@id/ITunesMusicFragment" />
+    </fragment>
+</navigation>
