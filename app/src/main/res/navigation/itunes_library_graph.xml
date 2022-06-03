@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/libraryMusicFragment"
-        android:name="com.github.krottv.tmstemp.view.LibraryMusicFragment"
+        android:name="com.example.app.view.LibraryMusicFragment"
         android:label="LibraryMusicFragment" >
         <action
             android:id="@+id/action_libraryMusicFragment_to_ITunesMusicFragment"

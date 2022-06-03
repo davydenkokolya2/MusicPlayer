@@ -42,12 +42,15 @@ class ITunesMusicFragmentBinder(val fragment: ITunesMusicFragment) {
             else
                 (binding.albumsRecyclerITunes.adapter as AlbumsAdapter).data = list
     }
-
+    fun onItemClick(view: View, tracks: Tracks): Boolean {
+        Log.i("Test", tracks.title.toString())
+        return true
+    }
     fun tracksLoaded(list: TracksModel?) {
 
         if (list != null) {
             if (binding.tracksRecyclerITunes.adapter == null)
-                binding.tracksRecyclerITunes.adapter = TracksAdapter(list.tracks)
+                binding.tracksRecyclerITunes.adapter = TracksAdapter(list.tracks, ::onItemClick)
             else
                 (binding.tracksRecyclerITunes.adapter as TracksAdapter).data = list.tracks
         }

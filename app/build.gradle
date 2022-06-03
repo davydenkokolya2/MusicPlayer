@@ -46,6 +46,8 @@ dependencies {
 // Koin Test features
     testImplementation "io.insert-koin:koin-test:$koin_version"
 
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+
     implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.okhttp3:okhttp:4.9.3"

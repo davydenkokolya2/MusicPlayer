@@ -11,8 +11,10 @@ import coil.load
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.domain.AlbumModel
 import com.github.krottv.tmstemp.domain.Tracks
+import com.github.krottv.tmstemp.domain.TracksModel
+import kotlin.reflect.KFunction2
 
-class TracksAdapter(data: List<Tracks>) : RecyclerView.Adapter<TracksViewHolder>() {
+class TracksAdapter(data: List<Tracks>, private val onItemClick: (View, Tracks) -> Boolean) : RecyclerView.Adapter<TracksViewHolder>() {
 
     var data: List<Tracks> = data
         set(value) {
@@ -36,6 +38,11 @@ class TracksAdapter(data: List<Tracks>) : RecyclerView.Adapter<TracksViewHolder>
             override fun getOutline(p0: View, p1: Outline) {
                 p1.setRoundRect(0, 0, p0.width, p0.height, 8.0F)
             }
+        }
+
+        holder.itemView.setOnLongClickListener{
+            onItemClick(it, item)
+            return@setOnLongClickListener true
         }
     }
 
