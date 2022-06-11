@@ -3,27 +3,24 @@ package com.example.app.data
 import android.content.Context
 import android.util.Log
 import androidx.work.CoroutineWorker
-import androidx.work.Data
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
+import com.example.app.data.remote.RemoteDataSourceRetrofit
 import com.example.app.view.DownloadNotification
-import com.github.krottv.tmstemp.data.LibraryRemoteDataSourceRetrofit
-import com.github.krottv.tmstemp.domain.Tracks
-import kotlinx.coroutines.delay
 import okhttp3.ResponseBody
-import java.io.Console
+import org.koin.core.parameter.parametersOf
+import org.koin.java.KoinJavaComponent.inject
 import java.io.FileOutputStream
 import java.io.InputStream
 
 class UploadMusicWorker(
-   // private val tracks: Tracks,
-   // private val remoteDataSourceRetrofit: LibraryRemoteDataSourceRetrofit,
     private val appContext: Context,
     params: WorkerParameters
 ) : CoroutineWorker(appContext, params) {
 
     private val downloadNotification: DownloadNotification = DownloadNotification(appContext)
-    private val remoteDataSourceRetrofit: RemoteDataSourceRetrofit = LibraryRemoteDataSourceRetrofit()
+    private val baseUrl = inputData.getString("2")
+    private val remoteDataSourceRetrofit: RemoteDataSourceRetrofit by inject(RemoteDataSourceRetrofit::class.java) { parametersOf(baseUrl)}
 
 
     override suspend fun doWork(): Result {
@@ -33,7 +30,6 @@ class UploadMusicWorker(
         Log.i("test", url!!)
         val fileName = url?.substring(url.lastIndexOf("/") + 1)
         val pathWhereYouWantToSaveFile = appContext.filesDir.absolutePath + fileName
-
         val responseBody = url?.let { remoteDataSourceRetrofit.downloadFile(it).body() }
         saveFile(responseBody, pathWhereYouWantToSaveFile)
         //delay(2000L)
@@ -48,13 +44,12 @@ class UploadMusicWorker(
         return ForegroundInfo(9274, downloadNotification.downloadNotification())
     }
 
-    fun saveFile(body: ResponseBody?, pathWhereYouWantToSaveFile: String): String {
+    private fun saveFile(body: ResponseBody?, pathWhereYouWantToSaveFile: String): String {
         if (body == null)
             return ""
         var input: InputStream? = null
         try {
             input = body.byteStream()
-            //val file = File(getCacheDir(), "cacheFileAppeal.srl")
             val fos = FileOutputStream(pathWhereYouWantToSaveFile)
             fos.use { output ->
                 val buffer = ByteArray(4 * 1024) // or other buffer size

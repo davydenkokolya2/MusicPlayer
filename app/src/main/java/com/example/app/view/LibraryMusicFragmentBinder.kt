@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.view
+package com.example.app.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.app.view.LibraryMusicFragment
+import com.example.app.view.albumsrecycler.AlbumsAdapter
+import com.example.app.view.tracksrecycler.TracksAdapter
 import com.github.krottv.tmstemp.databinding.LibraryMusicFragmentBinding
 import com.github.krottv.tmstemp.domain.AlbumModel
+import com.github.krottv.tmstemp.domain.TrackModel
 import com.github.krottv.tmstemp.domain.Tracks
-import com.github.krottv.tmstemp.domain.TracksModel
 
-class LibraryMusicFragmentBinder(val fragment: LibraryMusicFragment, val onItemClick: (View, Tracks) -> Boolean) {
+class LibraryMusicFragmentBinder(
+    val fragment: LibraryMusicFragment,
+    val onItemClick: (View, TrackModel) -> Boolean
+) {
 
     lateinit var binding: LibraryMusicFragmentBinding
 
@@ -35,7 +40,7 @@ class LibraryMusicFragmentBinder(val fragment: LibraryMusicFragment, val onItemC
         return binding.root
     }
 
-    fun onDataLoaded(list: List<AlbumModel>?) {
+    fun albumsLoaded(list: List<AlbumModel>?) {
 
         if (list != null)
             if (binding.albumsRecyclerLibrary.adapter == null)
@@ -44,9 +49,7 @@ class LibraryMusicFragmentBinder(val fragment: LibraryMusicFragment, val onItemC
                 (binding.albumsRecyclerLibrary.adapter as AlbumsAdapter).data = list
     }
 
-
-
-    fun tracksLoaded(list: TracksModel?) {
+    fun tracksLoaded(list: Tracks?) {
 
         if (list != null) {
 

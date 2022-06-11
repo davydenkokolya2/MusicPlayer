@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.view
+package com.example.app.view.albumsrecycler
 
 import android.media.Image
 import android.view.View

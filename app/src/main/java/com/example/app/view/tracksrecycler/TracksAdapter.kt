@@ -1,7 +1,6 @@
-package com.github.krottv.tmstemp.view
+package com.example.app.view.tracksrecycler
 
 import android.graphics.Outline
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,11 @@ import android.view.ViewOutlineProvider
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.krottv.tmstemp.R
-import com.github.krottv.tmstemp.domain.AlbumModel
-import com.github.krottv.tmstemp.domain.Tracks
-import com.github.krottv.tmstemp.domain.TracksModel
-import kotlin.reflect.KFunction2
+import com.github.krottv.tmstemp.domain.TrackModel
 
-class TracksAdapter(data: List<Tracks>, private val onItemClick: (View, Tracks) -> Boolean) : RecyclerView.Adapter<TracksViewHolder>() {
+class TracksAdapter(data: List<TrackModel>, private val onItemClick: (View, TrackModel) -> Boolean) : RecyclerView.Adapter<TracksViewHolder>() {
 
-    var data: List<Tracks> = data
+    var data: List<TrackModel> = data
         set(value) {
             field = value
         }

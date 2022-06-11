@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/hostFragment2"
-        android:name="com.github.krottv.tmstemp.view.HostFragment"
+        android:name="com.example.app.view.HostFragment"
         android:label="HostFragment" />
 </navigation>

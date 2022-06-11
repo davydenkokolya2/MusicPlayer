@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.view
+package com.example.app.view
 
 import android.app.Service
 import android.content.Intent

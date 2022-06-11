@@ -1,7 +1,6 @@
-package com.github.krottv.tmstemp.view
+package com.example.app.view.albumsrecycler
 
 import android.graphics.Outline
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.krottv.tmstemp.R
 import com.github.krottv.tmstemp.domain.AlbumModel
-import com.github.krottv.tmstemp.domain.Tracks
 
 class AlbumsAdapter(data: List<AlbumModel>): RecyclerView.Adapter<AlbumsViewHolder>() {
 
