@@ -3,7 +3,7 @@ package com.example.app.data.room
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.github.krottv.tmstemp.domain.AlbumModel
+import com.example.app.domain.AlbumModel
 
 @Dao
 interface AlbumsDao {
@@ -24,6 +24,6 @@ interface AlbumsDao {
         }
     }*/
 
-    @Query("select * from albums where id = :albumId")
-    suspend fun getAlbumWithTracks(albumId: Long): TracksWithAlbumEntity
+    /*@Query("select * from albums where id = :albumId")
+    suspend fun getAlbumWithTracks(albumId: Long): TracksWithAlbumEntity*/
 }

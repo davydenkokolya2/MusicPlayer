@@ -2,8 +2,8 @@ package com.example.app.data.room
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import com.github.krottv.tmstemp.domain.AlbumModel
-import com.github.krottv.tmstemp.domain.TrackModel
+import com.example.app.domain.AlbumModel
+import com.example.app.domain.TrackModel
 
 data class TracksWithAlbumEntity(
     @Embedded val album: AlbumModel,

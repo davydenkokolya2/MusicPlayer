@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.domain
+package com.example.app.domain
 
 import kotlinx.serialization.Serializable
 

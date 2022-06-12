@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
+import com.example.app.data.remote.RemoteDataSource
 import com.example.app.data.remote.RemoteDataSourceRetrofit
 import com.example.app.view.DownloadNotification
 import okhttp3.ResponseBody
@@ -20,7 +21,7 @@ class UploadMusicWorker(
 
     private val downloadNotification: DownloadNotification = DownloadNotification(appContext)
     private val baseUrl = inputData.getString("2")
-    private val remoteDataSourceRetrofit: RemoteDataSourceRetrofit by inject(RemoteDataSourceRetrofit::class.java) { parametersOf(baseUrl)}
+    private val remoteDataSourceRetrofit: RemoteDataSource by inject(RemoteDataSourceRetrofit::class.java) { parametersOf(baseUrl)}
 
 
     override suspend fun doWork(): Result {

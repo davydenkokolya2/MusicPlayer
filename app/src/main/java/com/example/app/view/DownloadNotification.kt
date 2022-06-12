@@ -7,7 +7,8 @@ import android.content.Context
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.github.krottv.tmstemp.R
+
+
 import kotlinx.coroutines.delay
 
 const val CHANNEL_ID = "importance_message"

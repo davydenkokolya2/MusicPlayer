@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.domain
+package com.example.app.domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

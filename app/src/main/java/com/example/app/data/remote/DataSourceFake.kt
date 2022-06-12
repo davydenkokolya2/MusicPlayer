@@ -1,26 +1,32 @@
 package com.example.app.data.remote
 
-import com.github.krottv.tmstemp.domain.AlbumModel
-import com.github.krottv.tmstemp.domain.TrackModel
-import com.github.krottv.tmstemp.domain.Tracks
+import com.example.app.domain.AlbumModel
+import com.example.app.domain.TrackModel
+import com.example.app.domain.Tracks
 import okhttp3.ResponseBody
 import retrofit2.Response
 
-class DataSourceFake : RemoteDataSourceRetrofit {
+class DataSourceFake : RemoteDataSource {
 
-    override suspend fun getAlbums(): List<AlbumModel> {
+    override suspend fun getAlbums(flag: Boolean): List<AlbumModel> {
         val model = AlbumModel(
             0,
             "https://inspiry-2ee60.web.app/music/images/itunes/hip_hop.jpg",
             "Some Text",
             1
         )
-
         val mutableListOf = ArrayList<AlbumModel>(10)
-        for (i in 0..10) {
-            mutableListOf.add(model.copy(name = "Some Text $i"))
-        }
-
+        if (flag)
+            for (i in 0..10) {
+                mutableListOf.add(model.copy(name = "Itunes $i", id = i.toLong()))
+            }
+        else
+            for (i in 0..10) {
+                mutableListOf.add(model.copy(name = "Library $i", id = i.toLong()))
+            }
+        /*for (i in 0..10) {
+            mutableListOf.add(model.copy(name = "Some Text $i", id = i.toLong()))
+        }*/
         return mutableListOf
     }
 
@@ -39,14 +45,15 @@ class DataSourceFake : RemoteDataSourceRetrofit {
                     "sadsaf",
                     "https://inspiry-2ee60.web.app/music/images/itunes/hip_hop.jpg",
                     "sadas",
-                    "https://sefon.pro/api/mp3_download/direct/715434/3vUCALS9wFZWtyA8yzt4jxmjH2dSTifxrLtB_1f9WIUvts6N21S_rB0s5JQFHIy4wxfYW4vxH7TDxQ-Xes3IoUJuMkSoJIv9LfSx7P69GbK_lXqPHQSga-748euDWlblPrqtwbKbtSTeOQn_2O_CLx-C7dRia7Efwa9HH48/",
-                    0
+                    "https://muzati.net/music/0-0-1-18352-20",
+
                 )
             )
         )
     }
 
     override suspend fun downloadFile(fileUrl: String): Response<ResponseBody> {
-        TODO("Not yet implemented")
+        TODO()
     }
+
 }

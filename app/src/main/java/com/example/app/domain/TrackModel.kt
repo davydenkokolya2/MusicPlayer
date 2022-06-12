@@ -1,4 +1,4 @@
-package com.github.krottv.tmstemp.domain
+package com.example.app.domain
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -12,5 +12,5 @@ data class TrackModel(
     var image: String,
     var title: String,
     var url: String,
-    val albumId: Long
+   // val albumId: Long
 )

@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.github.krottv.tmstemp.R
-import com.github.krottv.tmstemp.domain.AlbumModel
 
-class AlbumsAdapter(data: List<AlbumModel>): RecyclerView.Adapter<AlbumsViewHolder>() {
+import com.example.app.domain.AlbumModel
+import com.example.app.view.R
+
+class AlbumsAdapter(data: List<AlbumModel>) : RecyclerView.Adapter<AlbumsViewHolder>() {
 
     var data: List<AlbumModel> = data
         set(value) {
@@ -29,7 +30,7 @@ class AlbumsAdapter(data: List<AlbumModel>): RecyclerView.Adapter<AlbumsViewHold
         holder.textAlbum.text = item.name
 
         holder.imageAlbum.clipToOutline = true
-        holder.imageAlbum.outlineProvider = object: ViewOutlineProvider() {
+        holder.imageAlbum.outlineProvider = object : ViewOutlineProvider() {
             override fun getOutline(p0: View, p1: Outline) {
                 p1.setRoundRect(0, 0, p0.width, p0.height, 10.0F)
             }

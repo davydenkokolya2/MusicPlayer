@@ -9,12 +9,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.github.krottv.tmstemp.databinding.ActivityMainBinding
+import com.example.app.data.permission.StoragePermissionChecker
+import com.example.app.data.permission.StoragePermissionCheckerImpl
+import com.example.app.view.databinding.ActivityMainBinding
+import org.koin.android.ext.android.inject
+
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var broadcastReceiever: BroadcastReceiver
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

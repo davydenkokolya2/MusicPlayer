@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.view.ViewOutlineProvider
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.github.krottv.tmstemp.R
-import com.github.krottv.tmstemp.domain.TrackModel
+import com.example.app.domain.TrackModel
+import com.example.app.view.R
 
 class TracksAdapter(data: List<TrackModel>, private val onItemClick: (View, TrackModel) -> Boolean) : RecyclerView.Adapter<TracksViewHolder>() {
 

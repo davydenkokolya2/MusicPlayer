@@ -1,11 +1,11 @@
 package com.example.app.view.albumsrecycler
 
-import android.media.Image
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.github.krottv.tmstemp.R
+import com.example.app.view.R
+
 
 class AlbumsViewHolder(view: View): RecyclerView.ViewHolder(view){
     val imageAlbum = view.findViewById<ImageView>(R.id.imageAlbum)

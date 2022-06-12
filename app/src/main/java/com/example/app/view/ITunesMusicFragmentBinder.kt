@@ -5,13 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.app.view.ITunesMusicFragment
 import com.example.app.view.albumsrecycler.AlbumsAdapter
 import com.example.app.view.tracksrecycler.TracksAdapter
-import com.github.krottv.tmstemp.databinding.ItunesMusicFragmentBinding
-import com.github.krottv.tmstemp.domain.AlbumModel
-import com.github.krottv.tmstemp.domain.TrackModel
-import com.github.krottv.tmstemp.domain.Tracks
+import com.example.app.domain.AlbumModel
+import com.example.app.domain.TrackModel
+import com.example.app.domain.Tracks
+import com.example.app.view.databinding.ItunesMusicFragmentBinding
 
 class ITunesMusicFragmentBinder(
     val fragment: ITunesMusicFragment,

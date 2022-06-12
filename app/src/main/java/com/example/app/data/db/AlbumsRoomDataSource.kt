@@ -1,7 +1,7 @@
 package com.example.app.data.db
 
 import com.example.app.data.room.MyDatabase
-import com.github.krottv.tmstemp.domain.AlbumModel
+import com.example.app.domain.AlbumModel
 
 class AlbumsRoomDataSource(database: MyDatabase): AlbumsDbDataSource {
 

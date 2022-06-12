@@ -13,11 +13,11 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.example.app.data.UploadMusicWorker
-import com.example.app.data.remote.DataSourceFake
 import com.example.app.presentation.FragmentStateViewModel
-import com.github.krottv.tmstemp.domain.TrackModel
-import com.github.krottv.tmstemp.presentation.AlbumsViewModel
-import com.github.krottv.tmstemp.presentation.TracksViewModel
+import com.example.app.domain.TrackModel
+import com.example.app.presentation.AlbumsViewModel
+import com.example.app.presentation.TracksMyMusicViewModel
+import com.example.app.presentation.TracksViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
@@ -62,19 +62,24 @@ class ITunesMusicFragment : Fragment() {
                 albumsViewModel.changeFragment(1)
             }
 */
-        albumsViewModel.loadAlbums()
+        albumsViewModel.loadAlbums(true)
 
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 fragmentStateViewModel.appFragmentState.collect {
-                    if (it != null)
+                    if (it != null) {
+                        val navController = findNavController()
                         if (it.numberOfFragment == 1) {
-                            val navController = findNavController()
-
                             val action =
                                 ITunesMusicFragmentDirections.actionITunesMusicFragmentToLibraryMusicFragment()
                             navController.navigate(action)
                         }
+                        if (it.numberOfFragment == 2) {
+                            val action =
+                                ITunesMusicFragmentDirections.actionITunesMusicFragmentToMyMusicFragment()
+                            navController.navigate(action)
+                        }
+                    }
                 }
             }
         }
