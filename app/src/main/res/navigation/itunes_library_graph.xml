@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/ITunesMusicFragment"
-        android:name="com.example.app.view.ITunesMusicFragment"
+        android:name="com.example.app.presentation.view.itunesfragment.ITunesMusicFragment"
         android:label="ITunesMusicFragment" >
         <action
             android:id="@+id/action_ITunesMusicFragment_to_libraryMusicFragment"
@@ -14,10 +14,13 @@
         <action
             android:id="@+id/action_ITunesMusicFragment_to_myMusicFragment"
             app:destination="@id/myMusicFragment" />
+        <action
+            android:id="@+id/action_ITunesMusicFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/libraryMusicFragment"
-        android:name="com.example.app.view.LibraryMusicFragment"
+        android:name="com.example.app.presentation.view.libraryfragment.LibraryMusicFragment"
         android:label="LibraryMusicFragment" >
         <action
             android:id="@+id/action_libraryMusicFragment_to_ITunesMusicFragment"
@@ -25,10 +28,13 @@
         <action
             android:id="@+id/action_libraryMusicFragment_to_myMusicFragment"
             app:destination="@id/myMusicFragment" />
+        <action
+            android:id="@+id/action_libraryMusicFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
     </fragment>
     <fragment
         android:id="@+id/myMusicFragment"
-        android:name="com.example.app.view.MyMusicFragment"
+        android:name="com.example.app.presentation.view.mymusicfragment.MyMusicFragment"
         android:label="MyMusicFragment" >
         <action
             android:id="@+id/action_myMusicFragment_to_ITunesMusicFragment"
@@ -36,5 +42,22 @@
         <action
             android:id="@+id/action_myMusicFragment_to_libraryMusicFragment"
             app:destination="@id/libraryMusicFragment" />
+        <action
+            android:id="@+id/action_myMusicFragment_to_purchaseFragment"
+            app:destination="@id/purchaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseFragment"
+        android:name="com.example.app.presentation.view.purchasefragment.PurchaseFragment"
+        android:label="PurchaseFragment" >
+        <action
+            android:id="@+id/action_purchaseFragment_to_ITunesMusicFragment"
+            app:destination="@id/ITunesMusicFragment" />
+        <action
+            android:id="@+id/action_purchaseFragment_to_libraryMusicFragment"
+            app:destination="@id/libraryMusicFragment" />
+        <action
+            android:id="@+id/action_purchaseFragment_to_myMusicFragment"
+            app:destination="@id/myMusicFragment" />
     </fragment>
 </navigation>

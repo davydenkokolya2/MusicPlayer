@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.Uri
 import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import com.example.app.domain.TrackModel
 
 class TracksMyMusicDataSourceImpl(private val context: Context) :
@@ -52,10 +53,11 @@ class TracksMyMusicDataSourceImpl(private val context: Context) :
                 val image = ContentUris
                     .withAppendedId(contentUriTracks, id)
 
-                result.add(TrackModel(id, artist, image.toString(), title, ""))
+                result.add(TrackModel(artist, image.toString(), title, ""))
 
             } while (cursor.moveToNext())
         }
+        Log.i("test", result.toString())
         return result
     }
 }

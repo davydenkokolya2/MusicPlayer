@@ -5,33 +5,30 @@ import android.util.Log
 import androidx.work.CoroutineWorker
 import androidx.work.ForegroundInfo
 import androidx.work.WorkerParameters
-import com.example.app.data.remote.RemoteDataSource
 import com.example.app.data.remote.RemoteDataSourceRetrofit
-import com.example.app.view.DownloadNotification
+import com.example.app.presentation.view.DownloadNotification
 import okhttp3.ResponseBody
-import org.koin.core.parameter.parametersOf
-import org.koin.java.KoinJavaComponent.inject
 import java.io.FileOutputStream
 import java.io.InputStream
 
 class UploadMusicWorker(
     private val appContext: Context,
-    params: WorkerParameters
+    params: WorkerParameters,
+
 ) : CoroutineWorker(appContext, params) {
 
     private val downloadNotification: DownloadNotification = DownloadNotification(appContext)
     private val baseUrl = inputData.getString("2")
-    private val remoteDataSourceRetrofit: RemoteDataSource by inject(RemoteDataSourceRetrofit::class.java) { parametersOf(baseUrl)}
-
+    private val remoteDataSourceRetrofit = RemoteDataSourceRetrofit()
 
     override suspend fun doWork(): Result {
 
         setForeground(getForegroundInfo())
         val url = inputData.getString("1")
         Log.i("test", url!!)
-        val fileName = url?.substring(url.lastIndexOf("/") + 1)
+        val fileName = url.substring(url.lastIndexOf("/") + 1)
         val pathWhereYouWantToSaveFile = appContext.filesDir.absolutePath + fileName
-        val responseBody = url?.let { remoteDataSourceRetrofit.downloadFile(it).body() }
+        val responseBody = url.let { remoteDataSourceRetrofit.downloadFile(it).body() }
         saveFile(responseBody, pathWhereYouWantToSaveFile)
         //delay(2000L)
         Log.i("test", appContext.filesDir.absolutePath.toString())
